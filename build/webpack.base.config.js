@@ -16,14 +16,6 @@ module.exports = {
 				loader: 'babel-loader',
 				include: [resove('src')]
 			},
-			{
-		        test: /\.css$/,
-		        use: [
-		          'style-loader',
-		          'css-loader',
-		        ]
-
-		    },
 		    {
 		        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
 		        loader: 'url-loader',

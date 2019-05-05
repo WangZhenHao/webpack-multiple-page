@@ -17,6 +17,18 @@ const devWebpackConfig = merge(common, {
 		open: config.dev.autoOpenBrower,
 		openPage: './home.html'
 	},
+	module: {
+		rules: [
+		    {
+		        test: /\.css$/,
+		        use: [
+		          'style-loader',
+		          'css-loader',
+		        ]
+
+		    },
+		]
+	},
 	plugins: [
 	  //启用热替换模块(Hot Module Replacement)，也被称为 HMR。
 	  new webpack.HotModuleReplacementPlugin()
