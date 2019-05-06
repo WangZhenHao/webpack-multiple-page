@@ -30,7 +30,12 @@
 │    │          index.scss
 │    │
 │    └─assets                          // 公共文件夹
-│           
+│          ├─ layout                   // 复用html     
+           │     head.html             // 公共头文件 
+           │ 
+
+
+
 │─static                               //静态文件文件夹
 │    ├─js
 │    ├─css
@@ -43,7 +48,7 @@
 
 ```
 
-### Build Setup
+### 构建步骤
 ``` bash
 # 安装依赖
 npm install
@@ -56,5 +61,4 @@ npm run build
 ```
 
 ### qq讨论群: 475870039
-
 
