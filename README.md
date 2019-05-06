@@ -2,7 +2,7 @@
 
 ## 适用于多个静态页面的显示, 如官网
 
-## 目录结构
+### 目录结构
 
 ```
 │─build                                 多页面配置文件
@@ -42,3 +42,19 @@
 │  README.md
 
 ```
+
+### Build Setup
+``` bash
+# 安装依赖
+npm install
+
+# 开发的时候在本地启动, 并开始热加载
+npm run dev
+
+# production的发布时打包
+npm run build
+```
+
+### qq讨论群: 475870039
+
+
