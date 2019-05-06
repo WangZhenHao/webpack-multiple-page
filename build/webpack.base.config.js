@@ -45,13 +45,13 @@ module.exports = {
 		]
 	},
 	plugins: [
-		...pagesGenerate.htmlWebpackPlugin,
+		
 		new CopyWebpackPlugin([
 	      {
 	        // 定义要拷贝的源目录 
-	        from: path.join(__dirname, '..', './static'),
+	        from: resove('./static'),
 	        // 定义要拷贝到的目标目录
-	        to: path.join(__dirname, '..', './dist/static'),
+	        to: resove('./dist/static'),
 	        // 忽略拷贝指定的文件 
 	        ignore: ['.*']
 	        // flatten 只拷贝文件不管文件夹      默认是false

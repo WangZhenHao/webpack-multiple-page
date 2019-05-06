@@ -1,4 +1,4 @@
-import './home.scss'
+import './about.scss'
 
 var page = {
 	init() {

@@ -3,6 +3,8 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin');
 const common = require('./webpack.base.config.js');
 const webpack = require('webpack');
 const path = require('path');
+const { getPageGenerate } = require('./utils.js');
+const pagesGenerate = getPageGenerate();
 const portfinder = require('portfinder');
 const config = require('./config/index.js');
 
@@ -20,16 +22,18 @@ const devWebpackConfig = merge(common, {
 	module: {
 		rules: [
 		    {
-		        test: /\.css$/,
+		        test: /\.(c|sc)ss$/,
 		        use: [
 		          'style-loader',
 		          'css-loader',
+		          "sass-loader"
 		        ]
 
 		    },
 		]
 	},
 	plugins: [
+	  ...pagesGenerate.htmlWebpackPlugin,
 	  //启用热替换模块(Hot Module Replacement)，也被称为 HMR。
 	  new webpack.HotModuleReplacementPlugin()
 	]

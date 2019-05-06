@@ -19,6 +19,8 @@ function getPageGenerate() {
 			filename: path.join(__dirname, '..',`/dist/${name}.html`),
 			template: resove(item.template),
 			title: item.title,
+			// entry: name,
+            chunks: [name],
 			minify: {
 		        removeComments: false,
 		        collapseWhitespace: false,

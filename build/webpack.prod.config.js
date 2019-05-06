@@ -9,7 +9,8 @@ const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 const common = require('./webpack.base.config.js');
-const { assetsPath } = require('./utils.js');
+const { assetsPath, getPageGenerate } = require('./utils.js');
+const pagesGenerate = getPageGenerate();
 const config = require('./config/index.js');
 
 const prodWebpackConfig = merge(common, {
@@ -22,21 +23,17 @@ const prodWebpackConfig = merge(common, {
 	module: {
 		rules: [
 			{
-				test: /\.css$/,
+				test: /\.(c|sc)ss$/,
 				use: [
-					{
-						loader: MiniCssExtractPlugin.loader,
-						options:{
-				  	   		publicPath: ''
-				  	   	}
-
-					},
-					'css-loader'
+					MiniCssExtractPlugin.loader,
+					'css-loader',
+					"sass-loader"
 				]
 			}
 		]
 	},
 	plugins: [
+	    ...pagesGenerate.htmlWebpackPlugin,
         new CleanWebpackPlugin(),
 	    new OptimizeCSSPlugin({
 	      cssProcessorOptions: { safe: true }
@@ -46,5 +43,4 @@ const prodWebpackConfig = merge(common, {
         })
 	]
 })
-console.log(prodWebpackConfig.module.rules);
 module.exports = prodWebpackConfig;
