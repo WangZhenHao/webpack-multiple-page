@@ -1,6 +1,7 @@
-# webpack多页面脚手架
+# webpack4多页面脚手架
 
-## 适用于多个静态页面的显示, 如官网
+## 适用于多个静态页面的显示, 如官网  
+### [源码地址: https://github.com/WangZhenHao/webpack-multiple-page](https://github.com/WangZhenHao/webpack-multiple-page)
 
 ### 目录结构
 
@@ -31,11 +32,11 @@
 │    │
 │    └─assets                          // 公共文件夹
 │          ├─ layout                   // 复用html     
-           │     head.html             // 公共头文件 
-           │ 
-
-
-
+│          │     head.html             // 公共头文件 
+│          │ 
+│
+│
+│
 │─static                               //静态文件文件夹
 │    ├─js
 │    ├─css
