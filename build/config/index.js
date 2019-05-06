@@ -9,6 +9,7 @@ module.exports = {
 	},
 	build: {
 		path: path.resolve(__dirname, '../../','./dist'),
-		publicPath: './'
+		//如果是目录大于二级,必须设置'/'
+		publicPath: '/'
 	}
 }

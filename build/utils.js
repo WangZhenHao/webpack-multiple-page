@@ -14,9 +14,12 @@ function getPageGenerate() {
 	pages.forEach((item, index) => {
 		let name = item.name;
 		entry[name] = resove(item.entry);
-		console.log(path.join(__dirname, '..',`/dist/${name}.html`))
+		//处理多级目录
+		let catalogue = item.template.split('/');
+		catalogue.pop();
+		
 		htmlWebpackPlugin.push(new HtmlWebpackPlugin({
-			filename: path.join(__dirname, '..',`/dist/${name}.html`),
+			filename: path.join(__dirname, '..',`/dist/${catalogue.join('/')}.html`),
 			template: resove(item.template),
 			title: item.title,
 			// entry: name,
