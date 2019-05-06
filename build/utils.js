@@ -39,6 +39,7 @@ function getPageGenerate() {
 }
 
 function assetsPath(dir) {
+	// return path.posix.join('static', dir);
 	return path.posix.join('static', dir)
 }
 // getPageGenerate();
