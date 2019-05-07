@@ -11,13 +11,19 @@ const config = require('./config/index.js');
 const devWebpackConfig = merge(common, {
 	mode: 'development',
 	devServer: {
-		contentBase: path.join(__dirname, '..', './dist/'),
+		// contentBase: path.join(__dirname, '..', './dist/'),
+		contentBase: false,
 		historyApiFallback: false,
 		hot: true,
+		quiet: true,
+		// 出现错误时，在浏览器中显示全屏覆盖层
+		overlay: {
+			warnings: false, errors: true
+		},
 		host: config.dev.host,
 		port: config.dev.port,
 		open: config.dev.autoOpenBrower,
-		openPage: './home.html'
+		openPage: config.dev.openPage
 	},
 	module: {
 		rules: [
@@ -47,7 +53,7 @@ module.exports = new Promise((reslove, reject) => {
 		} else {
 			devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
 		        compilationSuccessInfo: {
-		          messages: [`您的应用运行在成功`],
+		          messages: [`您的应用运行在成功: http://localhost:${config.dev.port}${config.dev.openPage}`],
 		        }
 		    }))
 		}

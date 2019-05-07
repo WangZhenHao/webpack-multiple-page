@@ -5,7 +5,8 @@ module.exports = {
 		port: 3000,
 		autoOpenBrower: true,
 		host: 'localhost',
-		overlay: { warnings: false, errors: true }
+		overlay: { warnings: false, errors: true },
+		openPage: '/home.html'
 	},
 	build: {
 		path: path.resolve(__dirname, '../../','./dist'),
