@@ -1,5 +1,7 @@
-@import '../../assets/css/common.scss';
+@import '@/assets/css/common.scss';
 
-body {
-	background: pink;
+#wrap {
+	width: 200px;
+	height: 200px;
+	background: url(../../assets/img/left_03.jpg);
 }

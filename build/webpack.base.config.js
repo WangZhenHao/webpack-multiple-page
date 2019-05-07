@@ -8,6 +8,11 @@ function resove(dir) {
 }
 
 module.exports = {
+	resolve: {
+	  alias: {
+		  '@': resove('src')
+	  }
+	},
 	entry: pagesGenerate.entry,
 	module: {
 		rules: [
@@ -25,6 +30,10 @@ module.exports = {
 		          name: assetsPath('fonts/[name].[hash:7].[ext]')
 		        }
 		    },
+		    // {
+		    //     test: /\.(htm|html)$/i,
+		    //     loader: 'html-withimg-loader'
+		    // },
 		    {
 		        test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
 		        loader: 'url-loader',

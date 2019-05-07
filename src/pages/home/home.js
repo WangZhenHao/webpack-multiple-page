@@ -1,4 +1,5 @@
 import './home.scss'
+import '@/assets/js/fetch.js'
 
 var page = {
 	init() {

@@ -26,9 +26,9 @@
 │    │  │ 
 │    │  │
 │    │  └─home
-│    │          index.html
-│    │          index.js
-│    │          index.scss
+│    │          home.html
+│    │          home.js
+│    │          home.scss
 │    │
 │    └─assets                          // 公共文件夹
 │          ├─ layout                   // 复用html     
