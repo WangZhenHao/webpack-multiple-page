@@ -1,6 +1,8 @@
 # webpack4多页面脚手架
 
-## 适用于多个静态页面的显示, 如官网  
+## 适用于多个静态页面的显示, 如官网   
+
+### html-loader复用头文件和尾部文件
 ### [源码地址: https://github.com/WangZhenHao/webpack-multiple-page](https://github.com/WangZhenHao/webpack-multiple-page)
 
 ### 目录结构
