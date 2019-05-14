@@ -62,7 +62,7 @@ module.exports = new Promise((reslove, reject) => {
 		} else {
 			devWebpackConfig.plugins.push(new FriendlyErrorsPlugin({
 		        compilationSuccessInfo: {
-		          messages: [`您的应用运行在成功: http://localhost:${config.dev.port}/${config.dev.openPage}`],
+		          messages: [`您的应用运行成功: http://localhost:${config.dev.port}/${config.dev.openPage}`],
 		        }
 		    }))
 		}
