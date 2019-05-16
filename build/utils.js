@@ -23,7 +23,8 @@ function getPageGenerate() {
 			template: resove(item.template),
 			title: item.title,
 			// entry: name,
-            chunks: [name],
+			//需要引入的js
+            chunks: [name, 'common'],
 			minify: {
 		        removeComments: false,
 		        collapseWhitespace: false,
@@ -32,7 +33,8 @@ function getPageGenerate() {
 		        minifyJS: false,
 		        //压缩html中的css
 		        minifyCSS: false
-		    }
+		    },
+		    chunksSortMode: 'dependency'
 		}))
 	})
 	return {

@@ -18,7 +18,8 @@ const prodWebpackConfig = merge(common, {
 	output: {
 		filename: assetsPath('js/[name].[chunkhash].js'),
 		path: config.build.path,
-		publicPath: config.build.publicPath
+		publicPath: config.build.publicPath,
+		// chunkFilename: 
 	},
 	module: {
 		rules: [
@@ -32,6 +33,20 @@ const prodWebpackConfig = merge(common, {
 			}
 		]
 	},
+	optimization: {
+	    splitChunks: {
+	      cacheGroups: {
+	        common: {
+	          chunks: 'initial',
+		      name: 'common',
+		      //入口文件引入同一个js三次以上
+		      minChunks: 3,
+		      minSize: 1,
+		      filename: assetsPath("js/[name].[chunkhash].js")
+	        }
+	      }
+	    }
+	},
 	plugins: [
 	    ...pagesGenerate.htmlWebpackPlugin,
         new CleanWebpackPlugin(),
@@ -41,6 +56,7 @@ const prodWebpackConfig = merge(common, {
 	    new MiniCssExtractPlugin({
     　　  filename: assetsPath("css/[name].[chunkhash].css") 
         })
+        
 	]
 })
 module.exports = prodWebpackConfig;

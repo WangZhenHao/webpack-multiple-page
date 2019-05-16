@@ -2,7 +2,7 @@ import "./home.scss";
 import "@/assets/js/fetch.js";
 
 var page = {
-  init() {
+  init()  {
     console.log("页面初始化");
   }
 };

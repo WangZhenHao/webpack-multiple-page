@@ -19,7 +19,7 @@ module.exports = {
 			{
 				test: /\.js$/,
 				loader: 'babel-loader',
-				include: [resove('src')]
+				include: [resove('src'), resove('static')]
 			},
 		    {
 		        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
