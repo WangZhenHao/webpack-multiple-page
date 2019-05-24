@@ -5,6 +5,9 @@
 ### html-loader复用头文件和尾部文件
 ### [源码地址: https://github.com/WangZhenHao/webpack-multiple-page](https://github.com/WangZhenHao/webpack-multiple-page)
 
+
+### [案例:移动端官网](https://ss-sites.zhongxiang51.com/)
+
 ### 目录结构
 
 ```

@@ -3,8 +3,8 @@ const path = require('path');
 module.exports = {
 	dev: {
 		port: 3000,
-		autoOpenBrower: true,
-		host: 'localhost',
+		autoOpenBrower: false,
+		host: '0.0.0.0',
 		overlay: { warnings: false, errors: true },
 		openPage: 'home.html'
 	},
