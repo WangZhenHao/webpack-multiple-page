@@ -1,5 +1,6 @@
-# webpack4多页面脚手架
+# vue-cli2改造的webpack3多页面脚手架
 
+#### webpack3和webpack4打包机制不一样,导致手机端旧版本的浏览器无法执行js代码,因此搭建webpack3脚手架
 ## 适用于多个静态页面的显示, 如官网   
 
 ### html-loader复用头文件和尾部文件

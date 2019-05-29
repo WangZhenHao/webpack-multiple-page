@@ -1,55 +1,144 @@
+'use strict'
+const path = require('path')
+const config = require('../config')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const packageConfig = require('../package.json')
 const pages = require('./config/pages.js');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');  
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const isDev = process.env.NODE_ENV === 'development';
 
 function resove(dir) {
-	return path.join(__dirname, '..', './src/pages', dir);
+  return path.join(__dirname, '..', './src/pages', dir);
 }
 
 //获取入口的js和获取需要添加指定的文件名
-function getPageGenerate() {
-	let entry = {},
-	 	htmlWebpackPlugin = [];
+exports.getPageGenerate = function() {
+  let entry = {},
+    htmlWebpackPlugin = [];
 
-	pages.forEach((item, index) => {
-		let name = item.name;
-		entry[name] = resove(item.entry);
-		//处理多级目录
-		let catalogue = item.template.split('/');
-		catalogue.pop();
-		
-		htmlWebpackPlugin.push(new HtmlWebpackPlugin({
-			filename: path.join(__dirname, '..',`/dist/${catalogue.join('/')}.html`),
-			template: resove(item.template),
-			title: item.title,
-			// entry: name,
-			//需要引入的js
-            chunks: [name, 'common'],
-			minify: {
-		        removeComments: false,
-		        collapseWhitespace: false,
-		        removeAttributeQuotes: false,
-		        //压缩html中的js
-		        minifyJS: false,
-		        //压缩html中的css
-		        minifyCSS: false
-		    },
-		    chunksSortMode: 'dependency'
-		}))
-	})
-	return {
-		entry,
-		htmlWebpackPlugin
-	}
-}
-
-function assetsPath(dir) {
-	// return path.posix.join('static', dir);
-	return path.posix.join('static', dir)
+  pages.forEach((item, index) => {
+    let name = item.name;
+    entry[name] = resove(item.entry);
+    //处理多级目录
+    let catalogue = item.template.split('/');
+    catalogue.pop();
+    
+    htmlWebpackPlugin.push(new HtmlWebpackPlugin({
+      filename: isDev ? `${catalogue.join('/')}.html` : path.join(__dirname, '..',`/dist/${catalogue.join('/')}.html`),
+      template: resove(item.template),
+      title: item.title,
+      entry: name,
+      chunks: [name, 'common'],
+      minify: {
+            removeComments: false,
+            collapseWhitespace: false,
+            removeAttributeQuotes: false,
+            //压缩html中的js
+            minifyJS: false,
+            //压缩html中的css
+            minifyCSS: false
+        }
+    }))
+  })
+  return {
+    entry,
+    htmlWebpackPlugin
+  }
 }
 // getPageGenerate();
-// console.log(assetsPath('css/style.css'))
-module.exports = {
-	getPageGenerate,
-	assetsPath
+
+exports.assetsPath = function (_path) {
+  const assetsSubDirectory = process.env.NODE_ENV === 'production'
+    ? config.build.assetsSubDirectory
+    : config.dev.assetsSubDirectory
+
+  return path.posix.join(assetsSubDirectory, _path)
+}
+
+exports.cssLoaders = function (options) {
+  options = options || {}
+
+  const cssLoader = {
+    loader: 'css-loader',
+    options: {
+      sourceMap: options.sourceMap
+    }
+  }
+
+  const postcssLoader = {
+    loader: 'postcss-loader',
+    options: {
+      sourceMap: options.sourceMap
+    }
+  }
+
+  // generate loader string to be used with extract text plugin
+  function generateLoaders (loader, loaderOptions) {
+    const loaders = options.usePostCSS ? [cssLoader, postcssLoader] : [cssLoader]
+
+    if (loader) {
+      loaders.push({
+        loader: loader + '-loader',
+        options: Object.assign({}, loaderOptions, {
+          sourceMap: options.sourceMap
+        })
+      })
+    }
+
+    // Extract CSS when that option is specified
+    // (which is the case during production build)
+    if (options.extract) {
+      return ExtractTextPlugin.extract({
+        use: loaders,
+        fallback: 'vue-style-loader'
+      })
+    } else {
+      return ['vue-style-loader'].concat(loaders)
+    }
+  }
+
+  // https://vue-loader.vuejs.org/en/configurations/extract-css.html
+  return {
+    css: generateLoaders(),
+    postcss: generateLoaders(),
+    less: generateLoaders('less'),
+    sass: generateLoaders('sass', { indentedSyntax: true }),
+    scss: generateLoaders('sass'),
+    stylus: generateLoaders('stylus'),
+    styl: generateLoaders('stylus')
+  }
+}
+
+// Generate loaders for standalone style files (outside of .vue)
+exports.styleLoaders = function (options) {
+  const output = []
+  const loaders = exports.cssLoaders(options)
+
+  for (const extension in loaders) {
+    const loader = loaders[extension]
+    output.push({
+      test: new RegExp('\\.' + extension + '$'),
+      use: loader
+    })
+  }
+
+  return output
+}
+
+exports.createNotifierCallback = () => {
+  const notifier = require('node-notifier')
+
+  return (severity, errors) => {
+    if (severity !== 'error') return
+
+    const error = errors[0]
+    const filename = error.file && error.file.split('!').pop()
+
+    notifier.notify({
+      title: packageConfig.name,
+      message: severity + ': ' + error.name,
+      subtitle: filename || '',
+      icon: path.join(__dirname, 'logo.png')
+    })
+  }
 }

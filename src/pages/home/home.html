@@ -2,20 +2,14 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title><%= htmlWebpackPlugin.options.title %></title>
-	<%= require('html-loader!../../assets/layout/head.html')  %>
+	<title>Document</title>
 </head>
 <body>
-	你好啊,我是首页<br>
-	<a href="./about.html">关于我们</a><br>
-	<a href="./user/login.html">登录</a><br>
-	<a href="./user/register.html">注册</a>
+	我是首页
+	<a href="./about.html">关于我们</a>
 	<br>
-	<img src=<%= require('@/assets/img/left_03.jpg') %> />
-	<!-- <img src="/static/img/left_03.jpg" alt=""> -->
-	<div id="wrap"></div>
-	<script>
-		// document.body.style.background = "red";
-	</script>
+	<a href="./user/login.html">登录</a>
+	<br>
+	<a href="./user/register.html">注册界面</a>
 </body>
 </html>

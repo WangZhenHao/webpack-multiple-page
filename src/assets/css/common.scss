@@ -2,7 +2,13 @@
  * scss的公共样式
  */
 
-body {
-	font-size: 40px;
-	background: pink;
+
+
+@function font-value($val) {
+	@return ($val / 100) * 1rem;
 }
+
+/*.font-size {
+	font-size: 100px;
+}
+*/

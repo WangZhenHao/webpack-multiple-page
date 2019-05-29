@@ -1,2 +1,20 @@
-<meta name="description" content="一个提供数码通讯、手机、电脑、家居百货、服装服饰、母婴、图书、食品等数万种优质商品，最优质、最便捷的网上购物平台。">
+<meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<meta name="description" content="众享闪送">
 <!-- <script src="./static/js/common.js"></script> -->
+<script>
+	(function() {
+		var head = {
+			init: function() {
+				var deviceWidth = document.documentElement.clientWidth;
+				if(deviceWidth > 750) {
+					deviceWidth = 750;
+				}
+				document.documentElement.style.fontSize = deviceWidth / 7.5 + 'px';
+			},
+
+		}
+		head.init();
+	})()
+</script>
+<link href="./static/css/common.css?v=1.1.2" rel="stylesheet">
+<script src="./static/js/zepto.min.js?v=1.1.2"></script>

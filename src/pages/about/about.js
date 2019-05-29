@@ -1,10 +1,15 @@
-import "./about.scss";
-import "@/assets/js/fetch.js";
+import '@/assets/js/common.js'
 
-var page = {
-  init() {
-    console.log("页面初始化");
-  }
-};
+import '@/assets/css/common.scss'
+import '@/assets/css/animate.css'
+import './about.scss'
+
+console.log(Tools)
+
+var page =  {
+	init() {
+	   console.log('页面初始化')
+	}
+}
 
 page.init();

@@ -1,0 +1,177 @@
+<div class="title flex-box justify-s-b align-center p-l-ten p-r-ten bg-f">
+	<a 
+	href="./home.html" 
+	boy-animate-duration="2s" 
+	boy-animate-effect="bounceInLeft" 
+	boy-animate-delay="0.2s" 
+	class="logo boy-animate">
+		<img class="width-100 height-100" src="../../assets/img/home/logo.jpg" />
+	</a>
+	<div 
+	boy-animate-duration="2s" 
+	boy-animate-effect="bounceInRight" 
+	boy-animate-delay="0.2s" 
+	class="nav boy-animate">
+		<img class="width-100 height-100 open" src="../../assets/img/home/nav.jpg" alt="">
+		<img class="width-100 height-100 close" src="../../assets/img/home/close.jpg" alt="">
+	</div>
+</div>
+<div class="nav-bar fixed bg-f text-center font-34">
+	<div data-page="home" class="nav-link">
+		<a href="./home.html">首页</a>
+	</div>
+	<div data-page="sendService" class="nav-link">
+		<a class="nav-border-top" href="./sendService.html">闪送服务</a>
+	</div>
+	<div data-page="cabinetService" class="nav-link">
+		<a class="nav-border-top" href="./cabinetService.html">取餐柜服务</a>
+	</div>
+	<div data-page="signCase" class="nav-link">
+		<a class="nav-border-top" href="./signCase.html">签约案例</a>
+	</div>
+	<div data-page="about" class="nav-link">
+		<a class="nav-border-top" href="./about.html">关于我们</a>
+	</div>
+	<div data-page="connection" class="nav-link">
+		<a class="nav-border-top" href="./connection.html">联系我们</a>
+	</div>
+</div>
+<div class="bg-shadow fixed"></div>
+
+<script>
+	(function() {
+		var nav = {
+			handle: function() {
+				if($('.nav-bar').hasClass('nav-show')) {
+					$('.nav-bar').removeClass('nav-show');
+					$('.nav').removeClass('btn-open');
+					$('.bg-shadow').removeClass('bg-show');
+				} else {
+					$('.nav-bar').addClass('nav-show');
+					$('.nav').addClass('btn-open');
+					$('.bg-shadow').addClass('bg-show');
+				}
+			},
+			navClick: function() {
+				var self = this;
+				$('.nav').on('click', function() {
+					self.handle();
+				})
+			},
+			showClick: function() {
+				var self = this;
+				$('.bg-shadow').on('click', function() {
+					self.handle();
+				})
+			},
+			selectNav: function() {
+				var url = window.location.href;
+				$('.nav-link').each(function() {
+					var page = $(this).attr('data-page')
+					if(url.indexOf(page + '.html') > -1) {
+						$(this).addClass('selected');
+					}
+				})
+			},
+			init: function() {
+				this.navClick();
+				this.showClick();
+				this.selectNav();
+			}
+		}
+		nav.init();
+	})()
+</script>
+
+<style>
+	.title {
+		height: 1.2rem;
+		position: sticky;
+		position: -webkit-sticky;
+		top: 0;
+		left: 0;
+		z-index: 99;
+	}
+	.title .logo {
+		width: 1.92rem;
+		height: .4rem;
+	}
+	.title .nav {
+		width: .48rem;
+		height: .48rem;
+	}
+	.bg-shadow {
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		background: rgba(0, 0, 0, .6);
+		z-index: 97;
+		/*background: #000;*/
+		display: none;
+	}
+	.bg-show {
+		display: block;
+		animation: mymove .2s;
+		-webkit-animation: mymove .2s;
+	}
+
+	@keyframes mymove
+	{
+	  from {opacity: 0;}
+	  to {opacity: : .6;}
+	}
+
+	@-webkit-keyframes mymove
+	{
+	  from {opacity: 0;}
+	  to {opacity: : .6;}
+	}
+	.open {
+		display: block;
+	}
+	.close {
+		display: none;
+	}
+	.btn-open .open {
+		display: none;
+	}
+	.btn-open .close {
+		display: block;
+	}
+	.nav-bar {
+		width: 7.5rem;
+		height: 7.2rem;
+		padding: 1.2rem 0;
+		left: 50%;
+		transform: translateX(-50%);
+		top: 0;
+		z-index: 98;
+		display: none;
+	}
+	.nav-show {
+		display: block;
+	}
+	.nav-bar .nav-link {
+		padding: 0 1.15rem;
+	}
+	.nav-bar .nav-link a {
+		display: block;
+		color: #242424;
+		height: 1rem;
+		line-height: 1rem;
+
+	}
+	.nav-bar .selected {
+		background: #FFBB91;
+	}
+	.nav-bar .selected > a {
+		color: #fff;
+	}
+	.nav-border-top {
+		border-top: 1px solid #E9E9E9;
+	}
+	.font-34 {
+		font-size: .34rem;
+	}
+</style>

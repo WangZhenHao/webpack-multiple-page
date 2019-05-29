@@ -1,0 +1,215 @@
+/*body {
+	background: red;
+}*/
+body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, li, a, p, h1, h2, h3, h4,h5, h6, i, b, textarea, button, input, select, figure, figcaption {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+ul, li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+.font-b {
+	font-weight: bold;
+}
+.flex-box {
+	display: flex;
+}
+.justify-center {
+  justify-content: center;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.justify-s-b {
+  justify-content: space-between;
+}
+.align-center {
+  align-items: center;
+}
+.flex-1 {
+	flex: 1;
+}
+.width-100 {
+	width: 100%;
+}
+.height-100 {
+  height: 100%;
+}
+.font-26 {
+	font-size: .26rem;
+}
+.font-24 {
+	font-size: .24rem;
+}
+.font-36 {
+	font-size: .36rem;
+}
+.color-f {
+	color: #fff;
+}
+.color-0 {
+	color: #0D0408
+}
+.color-b3 {
+	color: #B3B3B3;
+}
+.bg-main {
+	background: #FF6E15;
+}
+.bg-f {
+	background: #fff;
+}
+.bg-f7 {
+	background: #F7F7F7;
+}
+.rel {
+	position: relative;
+}
+.abs {
+	position: absolute;
+	z-index: 1;
+}
+.fixed {
+	position: fixed;
+	z-index: 1;
+}
+.text-center {
+	text-align: center;
+}
+.ellipsis {
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+.over-hidden {
+	overflow: hidden;
+}
+
+.clearfix {
+	zoom:1;
+}
+.clearfix::after {
+	content: "";
+	display: block;
+	clear: both;
+}
+
+.p-ten {
+	padding: .24rem;
+}
+.p-t-ten {
+	padding-top: .24rem;
+}
+.p-b-ten {
+    padding-bottom: .24rem;	
+}
+.p-l-ten {
+	padding-left: .24rem;
+}
+.p-r-ten {
+	padding-right: .24rem;
+}
+
+.p-t-five {
+	padding-top: .14rem;
+}
+.p-b-five {
+    padding-bottom: .14rem;	
+}
+.p-l-five {
+	padding-left: .14rem;
+}
+.p-r-five {
+	padding-right: .14rem;
+}
+.m-ten {
+	margin: .24rem;
+}
+.m-t-ten {
+	margin-top: .24rem;
+}
+.m-b-ten {
+	margin-bottom: .24rem;
+}
+.m-r-ten {
+	margin-right: .24rem;
+}
+.m-l-ten {
+	margin-left: .24rem;
+}
+
+
+/*加载框, 提示框*/
+#toast {
+	position: fixed;
+	max-width: 60%;
+	left: 50%;
+	top: 50%;
+	transform: translate3d(-50%, -50%, 0);
+	background: rgba(0, 0, 0, .8);
+	border-radius: 6px;
+	z-index: 9999;
+	font-size: 16px;
+
+}
+
+#loading-wrap > .loading-icon{
+	position: absolute;
+	background: rgba(0, 0, 0, .7);
+	left: 50%;
+	top: 50%;
+	padding: 15px;
+	transform: translate3d(-50%, -50%, 0);
+	z-index: 9999;
+	border-radius: 6px;
+}
+@keyframes load {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(1turn);
+	}
+}
+.loading-animated {
+	animation: load .8s infinite linear;
+}
+.loading {
+	/*width: 32px;
+	height: 32px;*/
+	border-top-color: rgb(204, 204, 204);
+    border-left-color: rgb(204, 204, 204);
+    border-bottom-color: rgb(204, 204, 204);
+    border-right-color: transparent;
+    border-width: 4px;
+    border-style: solid;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+}
+
+.full-fixed {
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 999;
+}
+.error-info {
+	position: fixed;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	z-index: 888;
+	background: rgba(0, 0, 0, .5);
+}
+
+.pointer-events{
+	pointer-events: none;
+}
