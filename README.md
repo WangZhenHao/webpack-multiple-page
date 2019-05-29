@@ -1,4 +1,4 @@
-# webpack4多页面脚手架 [webpack3多页面](https://github.com/WangZhenHao/webpack-multiple-page/tree/webpack3)
+# webpack4多页面脚手架 [(移步webpack3多页面)](https://github.com/WangZhenHao/webpack-multiple-page/tree/webpack3)
 
 ## 适用于多个静态页面的显示, 如官网   
 
