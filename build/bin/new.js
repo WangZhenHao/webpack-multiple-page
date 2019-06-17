@@ -53,9 +53,8 @@ function buildFile() {
 			
 			if(!err) {
 				return;
-			} else {
-
 			}
+			
 			console.log('新建文件: ' + item.template)
 			
 			//新建html

@@ -8,6 +8,13 @@
 
 ### [案例:移动端官网](https://ss-sites.zhongxiang51.com/)
 
+#### 1.1.0 新增自动创建文件功能
+```
+添加新增文件的配置文件  build/bin/new.js
+
+在build/config/pages.js里面添加对应的配置即可
+```
+
 ### 目录结构
 
 ```
@@ -54,12 +61,7 @@
 
 ```
 
-#### 1.1.0 新增自动创建文件功能
-```
-添加新增文件的配置文件  build/bin/new.js
 
-在build/config/pages.js里面添加对应的配置即可
-```
 
 ### 构建步骤
 ``` bash
