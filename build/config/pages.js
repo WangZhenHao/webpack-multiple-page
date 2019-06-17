@@ -23,7 +23,7 @@ const pages = [
     template: 'about/about.html',
     entry: 'about/about.js',
     title: '关于我们'
-  },
+  }
 ]
 
 module.exports = pages;
