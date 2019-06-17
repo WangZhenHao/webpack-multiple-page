@@ -1,8 +1,8 @@
 'use strict'
 
-process.on('exit', function() {
+// process.on('exit', function() {
 
-});
+// });
 
 // if(!process.argv[2]) {
 // 	console.error('请输入文件名称 如home或者user/login');
