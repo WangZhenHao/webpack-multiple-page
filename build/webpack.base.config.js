@@ -16,11 +16,21 @@ module.exports = {
 	entry: pagesGenerate.entry,
 	module: {
 		rules: [
+			// {
+			// 	test: /\.js$/,
+			// 	loader: 'babel-loader',
+			// 	include: [resove('src'), resove('static')]
+			// },
 			{
-				test: /\.js$/,
-				loader: 'babel-loader',
-				include: [resove('src'), resove('static')]
-			},
+		      test: /\.js$/,
+		      exclude: /node_modules/,
+		      use: {
+		        loader: 'babel-loader',
+		        options: {
+		          presets: ['@babel/preset-env']
+		        }
+		      }
+		    },
 		    {
 		        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
 		        loader: 'url-loader',
