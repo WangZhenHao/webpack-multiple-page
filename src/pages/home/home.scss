@@ -1,8 +1,35 @@
 @import '@/assets/css/common.scss';
 
-#wrap {
+/*#wrap {
 	width: 200px;
 	height: 200px;
 	background: url(../../assets/img/left_03.jpg);
 	background-size: 100% 100%;
+}*/
+
+@mixin when() {
+	@content
+	position: fixed;
+	top: 0;
+	bottom: 0;
 }
+.error {
+	color: red;
+	font-weight: bold;
+}
+.test {
+	@extend .error;
+	@include when() {
+		padding: 10px;
+	}
+	> section {
+		background: #eee;
+	}
+}
+/*@include when(fullscreen) {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+    height: 100%;
+    overflow: auto;
+  }*/
