@@ -10,6 +10,10 @@ const config = require('./config/index.js');
 
 const devWebpackConfig = merge(common, {
 	mode: 'development',
+	output: {
+		filename: '[name].js',
+		publicPath: config.dev.publicPath
+	},
 	devServer: {
 		// contentBase: path.join(__dirname, '..', './dist/'),
 		contentBase: false,

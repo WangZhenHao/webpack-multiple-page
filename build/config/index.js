@@ -6,11 +6,13 @@ module.exports = {
 		autoOpenBrower: false,
 		host: '0.0.0.0',
 		overlay: { warnings: false, errors: true },
-		openPage: 'home.html'
+		openPage: 'home.html',
+		publicPath: '/'
 	},
 	build: {
+		//表示输出到dist目录
 		path: path.resolve(__dirname, '../../','./dist'),
 		//如果是目录大于二级,必须设置'/'
-		publicPath: './'
+		publicPath: 'http://www.baidu.com/'
 	}
 }
