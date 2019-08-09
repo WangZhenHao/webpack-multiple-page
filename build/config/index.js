@@ -13,6 +13,6 @@ module.exports = {
 		//表示输出到dist目录
 		path: path.resolve(__dirname, '../../','./dist'),
 		//如果是目录大于二级,必须设置'/'
-		publicPath: 'http://www.baidu.com/'
+		publicPath: './'
 	}
 }

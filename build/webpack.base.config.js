@@ -23,13 +23,12 @@ module.exports = {
 			// },
 			{
 		      test: /\.js$/,
-		      exclude: /node_modules/,
-		      use: {
-		        loader: 'babel-loader',
-		        options: {
-		          presets: ['@babel/preset-env']
-		        }
-		      }
+		      include: [resove('src')],
+		      loader: 'babel-loader',
+		      // use: {
+		      //   loader: 'babel-loader',
+		        
+		      // }
 		    },
 		    {
 		        test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,

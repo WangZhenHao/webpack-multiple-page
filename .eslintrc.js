@@ -8,8 +8,8 @@ module.exports = {
     },
     rules: {
         "indent": ["error", 2],
-        "quotes": ["error", "double"],
-        "semi": ["error", "always"],
+        "quotes": 0,
+        "semi": 0,
         "no-console": "off",
         "arrow-parens": 0
     }
