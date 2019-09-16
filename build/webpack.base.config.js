@@ -11,11 +11,28 @@ module.exports = {
 	resolve: {
 	  alias: {
 		  '@': resove('src')
-	  }
+	  },
+	  extensions: [".ts", ".tsx", ".js"]
 	},
 	entry: pagesGenerate.entry,
 	module: {
 		rules: [
+		  {
+	      test: /\.ts$/,
+	      exclude: /node_modules/,
+	      enforce: 'pre',
+	      loader: 'tslint-loader'
+	    },
+		  { 
+		  	test: /\.tsx?$/,
+		  	exclude: /node_modules/,
+		  	use: [
+		  	  { loader: 'babel-loader'},
+		  		{
+		  			loader: "ts-loader",
+		  		}
+		  	]  
+		  },
 			// {
 			// 	test: /\.js$/,
 			// 	loader: 'babel-loader',
