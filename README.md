@@ -1,18 +1,5 @@
-# webpack4多页面脚手架 [(移步webpack3多页面)](https://github.com/WangZhenHao/webpack-multiple-page/tree/webpack3)
+# [TypeScript多页面脚手架](https://github.com/WangZhenHao/webpack-multiple-page/tree/me-typescript-cli)
 
-## 适用于多个静态页面的显示, 如官网   
-
-### html-loader复用头文件和尾部文件
-### [源码地址: https://github.com/WangZhenHao/webpack-multiple-page](https://github.com/WangZhenHao/webpack-multiple-page)
-
-
-### [案例:移动端官网](https://ss-sites.zhongxiang51.com/)
-
-#### 1.1.0 新增自动创建文件功能
-```
-添加新增文件的配置文件  build/bin/new.js
-
-在build/config/pages.js里面添加对应的配置即可
 ```
 
 ### 目录结构
