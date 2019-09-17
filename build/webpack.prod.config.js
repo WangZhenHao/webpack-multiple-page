@@ -14,7 +14,7 @@ const pagesGenerate = getPageGenerate();
 const config = require('./config/index.js');
 
 const prodWebpackConfig = merge(common, {
-	mode: "production",
+	mode: "none",
 	output: {
 		filename: assetsPath('js/[name].[chunkhash].js'),
 		path: config.build.path,

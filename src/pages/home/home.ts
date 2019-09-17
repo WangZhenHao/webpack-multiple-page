@@ -1,20 +1,26 @@
-var page = {
-	init() {
-		this.test();
-		this.promis().then(res => {
-			alert(res)
-		})
-	},
-	test(persion: string = 'name') {
-	  return `hello ${persion}`
-	},
-	promis() {
-		return new Promise((res, rej) => {
-			res('wzh')
-		})
-	}
+import { test } from './test'
+
+interface TestInterface {
+  currentTime: Date
+  setTime(d: Date)
 }
 
-page.init();
+class Clock implements TestInterface {
+  currentTime: Date
 
-export default page;
+  setTime(d: Date) {
+    this.currentTime = d
+  }
+
+  constructor() {
+    this.setTime(new Date())
+    test();
+    debugger
+  }
+}
+
+let a = new Clock()
+
+
+
+export default {}
