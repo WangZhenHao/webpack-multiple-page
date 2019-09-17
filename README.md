@@ -1,4 +1,4 @@
-# webpack4多页面脚手架 [(移步webpack3多页面)](https://github.com/WangZhenHao/webpack-multiple-page/tree/me-typescript-cli)
+#  [TypeScript多页面脚手架](https://github.com/WangZhenHao/webpack-multiple-page/tree/me-typescript-cli)
 
 
 
