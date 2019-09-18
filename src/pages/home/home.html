@@ -1,18 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-	<meta charset="UTF-8">
-	<title><%= htmlWebpackPlugin.options.title %></title>
+  <meta charset="UTF-8">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+    }
+
+    .wrap {
+      width: 200px;
+      height: 200px;
+      background: pink;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+    }
+  </style>
 </head>
+
 <body>
-	你好啊,我是首页<br>
-	<a href="./about.html">关于我们</a><br>
-	<br>
-	<!-- <img src=<%= require('@/assets/img/left_03.jpg') %> /> -->
-	<!-- <img src="/static/img/left_03.jpg" alt=""> -->
-	<!-- <div id="wrap"></div> -->
-	<script>
-		// document.body.style.background = "red";
-	</script>
+  <div class="div1 wrap"></div>
+  <div class="div2 wrap"></div>
 </body>
+
 </html>

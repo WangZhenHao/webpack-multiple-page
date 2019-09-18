@@ -1,26 +1,7 @@
-import { test } from './test'
+import TouchSlider from './src';
 
-interface TestInterface {
-  currentTime: Date
-  setTime(d: Date)
-}
-
-class Clock implements TestInterface {
-  currentTime: Date
-
-  setTime(d: Date) {
-    this.currentTime = d
-  }
-
-  constructor() {
-    this.setTime(new Date())
-    test();
-    debugger
-  }
-}
-
-let a = new Clock()
+let a = new TouchSlider('.div1');
+let b = new TouchSlider('.div2');
 
 
-
-export default {}
+export default {};

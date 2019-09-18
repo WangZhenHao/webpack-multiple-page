@@ -1,6 +1,6 @@
 function test() {
-  alert(1)
+  alert(1);
 }
-test()
+test();
 
 export default test;
