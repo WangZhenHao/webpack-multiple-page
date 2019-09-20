@@ -5,25 +5,61 @@
   <meta charset="UTF-8">
   <title><%= htmlWebpackPlugin.options.title %></title>
   <style>
-    * {
+    body,
+    html,
+    li,
+    ul {
       padding: 0;
       margin: 0;
     }
 
-    .wrap {
-      width: 200px;
-      height: 200px;
-      background: pink;
-      position: absolute;
-      top: 10px;
-      left: 10px;
+    ul {
+      list-style: none;
+    }
+
+    body,
+    html {
+      font-family: "Microsoft YaHei";
+      width: 100%;
+      background: #fff;
+    }
+
+    .container {
+      height: 2000px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .swiper-container {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
     }
   </style>
 </head>
 
 <body>
-  <div class="div1 wrap"></div>
-  <div class="div2 wrap"></div>
+  <!--         1、创建一个简单的轮播(移动端模式查看)                  -->
+  <div class="select1">
+    <h3>1、创建一个简单的轮播(移动端模式查看)</h3>
+
+    <div id="demo" class="swiper-container">
+      <ul class="swiper-wrap">
+        <li><a
+            style="background-image: url(https://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=4005673712,1755636340&os=3330491514,526306790&simid=4036378288,505330849&pn=13&rn=1&di=38720&ln=2390&fr=&fmq=1568955045219_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&hs=2&objurl=http%3A%2F%2Fg1.hexunimg.cn%2F2014-12-16%2F171466296.jpg&rpstart=0&rpnum=0&adpicid=0&force=undefined);"></a>
+        </li>
+        <li><a
+            style="background-image: url(https://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=3638429004,1717840478&os=4082678548,1514092260&simid=4234322801,673234576&pn=0&rn=1&di=181720&ln=2390&fr=&fmq=1568955045219_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&hs=2&objurl=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201808%2F27%2F20180827043223_twunu.jpg&rpstart=0&rpnum=0&adpicid=0&force=undefined);"></a>
+        </li>
+        <li><a
+            style="background-image: url(https://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E7%BE%8E%E5%A5%B3%E5%9B%BE%E7%89%87&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&hd=undefined&latest=undefined&copyright=undefined&cs=1023086798,886608466&os=3150634052,957452846&simid=3539541809,436630853&pn=74&rn=1&di=15730&ln=2390&fr=&fmq=1568955045219_R&fm=&ic=undefined&s=undefined&se=&sme=&tab=0&width=undefined&height=undefined&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=0&spn=0&pi=0&gsm=0&hs=2&objurl=http%3A%2F%2Fimg.pconline.com.cn%2Fimages%2Fupload%2Fupc%2Ftx%2Fbbs6%2F1305%2F13%2Fc5%2F20883681_1368456182385_1024x1024.jpg&rpstart=0&rpnum=0&adpicid=0&force=undefined);"></a>
+        </li>
+      </ul>
+      <ul class="swiper-circle"></ul>
+    </div>
+
+  </div>
 </body>
 
 </html>
