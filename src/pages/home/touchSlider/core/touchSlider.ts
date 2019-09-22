@@ -1,17 +1,32 @@
 import DEFAULTS from './default';
+import { TouchSliderConfig } from '../type';
+import InitDom from './initDom';
+import swiperAction from './swiperAction';
 
 export default class TouchSlider {
   selector: string;
-  _set: any;
+  container: HTMLElement;
+  swiperWrap: HTMLElement;
+  _set: TouchSliderConfig = DEFAULTS;
+  slider: any;
 
-  constructor(selector, config) {
-    this._mergeOptions(selector, config);
+  constructor(selector: string, config: Object) {
+    this._mergeOptions(config);
+    this.init(selector);
+    console.log(this);
   }
 
-  _mergeOptions(selector, params) {
-    this.selector = selector;
-    this._set = {};
-
-    Object.assign(this._set, DEFAULTS, params);
+  _mergeOptions(params) {
+    // this._set = params;
+    Object.assign(this._set, params);
   }
+
+  init(selector) {
+
+    let domObject = new InitDom(selector, this._set);
+
+    this.slider = new swiperAction(domObject, this._set);
+  }
+
+
 }

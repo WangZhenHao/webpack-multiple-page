@@ -11,4 +11,6 @@ export interface TouchSliderConfig {
   slider_dis: number;
   // 是否开启无限轮播
   loop: Boolean;
+  // 是否显示指示器
+  pointer: Boolean;
 }
