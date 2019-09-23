@@ -12,11 +12,11 @@ export default class InitDom {
   constructor(selector, config) {
     this._set = config;
     this.container = document.querySelector(selector);
-    //图片容器元素
+    // 图片容器元素
     this.swiperWrap = this.container.children[0] as HTMLElement;
-    //li元素数组;
+    // li元素数组;
     this.swiperLi = this.swiperWrap.children;
-    //li个数;
+    // li个数;
     this.count = this.swiperLi.length;
 
     this.createTouchSliderCss();
@@ -31,8 +31,8 @@ export default class InitDom {
   }
 
   private createSwiperStyle() {
-    let num = this.count,
-      containerWidth = this.container.offsetWidth;
+    let num = this.count;
+    let containerWidth = this.container.offsetWidth;
 
     if (this._set.loop) {
       num += 2;
@@ -40,15 +40,15 @@ export default class InitDom {
 
     this.swiperWrap.style.width = num * containerWidth + 'px';
 
-    for (var i = 0; i < num; i++) {
+    for (let i = 0; i < num; i++) {
       (this.swiperLi[i] as HTMLElement).style.width = containerWidth + 'px';
     }
   }
 
-  private createTouchSliderCss() {
-    let cssStr = `.swiper-container { 
-      width: 100%; 
-      height: 400px; 
+  private createTouchSliderCss(): void {
+    let cssStr = `.swiper-container {
+      width: 100%;
+      height: 400px;
       overflow: hidden;
       position: relative;
     }
@@ -58,8 +58,8 @@ export default class InitDom {
       top: 0;
       transition: transform 0ms linear;
     }
-    .swiper-container > .swiper-wrap > li { 
-      float: left; 
+    .swiper-container > .swiper-wrap > li {
+      float: left;
     }
     .swiper-container > .swiper-wrap > li > a {
         display: block;
@@ -68,8 +68,8 @@ export default class InitDom {
     .swiper-container > .swiper-wrap > li,
     .swiper-container > .swiper-wrap,
     .swiper-container > .swiper-wrap > li > a {
-      width: 100%; 
-      height: 100%; 
+      width: 100%;
+      height: 100%;
     }
     .swiper-container > .swiper-circle {
       position: absolute;
@@ -97,20 +97,19 @@ export default class InitDom {
   }
 
   private createPoniter(): void {
-
     if (this._set.pointer) {
       this.pointerWrap = this.createPoniterLi(this.count);
-      //指示器元素li对象
+      // 指示器元素li对象
       this.pointerLi = this.pointerWrap.children;
     }
   }
 
   private createPoniterLi(count: number): HTMLElement {
-    let ul = document.createElement('ul'),
-      str = '';
+    let ul = document.createElement('ul');
+    let str = '';
 
     ul.className = 'swiper-circle'
-    for (var i = 0; i < count; i++) {
+    for (let i = 0; i < count; i++) {
       str += '<li data-index="' + i + '"></li>';
     }
 
