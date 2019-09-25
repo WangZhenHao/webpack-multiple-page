@@ -1,4 +1,4 @@
-import { TouchSliderConfig } from '../type'
+import { TouchSliderConfig } from '../type';
 
 export default class InitDom {
   container: HTMLElement;
@@ -8,6 +8,7 @@ export default class InitDom {
   pointerWrap: any = null;
   pointerLi: any = null;
   _set: TouchSliderConfig;
+  containerWidth: number;
 
   constructor(selector, config) {
     this._set = config;
@@ -32,16 +33,16 @@ export default class InitDom {
 
   private createSwiperStyle() {
     let num = this.count;
-    let containerWidth = this.container.offsetWidth;
+    this.containerWidth = this.container.offsetWidth;
 
     if (this._set.loop) {
       num += 2;
     }
 
-    this.swiperWrap.style.width = num * containerWidth + 'px';
+    this.swiperWrap.style.width = num * this.containerWidth + 'px';
 
     for (let i = 0; i < num; i++) {
-      (this.swiperLi[i] as HTMLElement).style.width = containerWidth + 'px';
+      (this.swiperLi[i] as HTMLElement).style.width = this.containerWidth + 'px';
     }
   }
 
