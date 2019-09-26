@@ -1,3 +1,3 @@
-import TouchSlider from './core/touchSlider';
+import TouchSlider from './core';
 
 export default TouchSlider;
