@@ -2,7 +2,7 @@ import { TouchSliderConfig } from '../type';
 
 let defaults: TouchSliderConfig = {
   autoPlay: true,
-  speed: 200,
+  speed: 300,
   interval: 3000,
   slider_dis: 50,
   distance: 'level',

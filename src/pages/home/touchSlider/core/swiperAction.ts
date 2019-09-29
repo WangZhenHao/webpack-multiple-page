@@ -23,17 +23,25 @@ export default class SwiperAction {
   count: number;
   pointerLi: HTMLCollection;
   timer: any;
+  currentIndex: number;
+
+  private isOutIndex: Boolean = false;
+  private isLessIndex: Boolean = false;
+  private isTouchEnd: Boolean = false;
 
   constructor(dom: Dom, options) {
     // this.touchEvent();
     let { swiperWrap, containerWidth, count, pointerLi } = dom;
 
     Object.assign(this, { swiperWrap, containerWidth, count, pointerLi });
-    console.log(this);
     this._set = options;
 
+
     this.touchEvent();
-    this.finished();
+
+    this.translated(-this.currentNumber() * this.containerWidth);
+    this.showPointer(this.index);
+
     this.autoPlay();
   }
 
@@ -48,10 +56,27 @@ export default class SwiperAction {
   }
 
   private transitionendHandle() {
-    console.log(this)
+    if (this._set.loop) {
+      if (this.isOutIndex || this.isLessIndex) {
+        this.isOutIndex = false;
+        this.isLessIndex = false;
+        this.swiperWrap.style.transitionDuration = 0 + 'ms';
+        this.translated(-this.currentNumber() * this.containerWidth);
+
+        setTimeout(function () {
+          // this.swiperWrap.style.transitionDuration = this._set.speed + 'ms';
+        }.bind(this), 0);
+      }
+
+    }
+
   }
 
   private autoPlay() {
+    if (this.count === 1) {
+      return;
+    }
+
     if (this._set.autoPlay) {
       this.clearAutoPlay();
       this.timer = setInterval(function () {
@@ -90,22 +115,60 @@ export default class SwiperAction {
       this.index--;
     }
 
+    this.isTouchEnd = true;
+
     this.end.x = 0;
 
     this.finished();
     this.autoPlay();
+    // this.transitionendHandle();
+  }
+
+  private recognitionIndex() {
+    if (this._set.loop) {
+      if (this.index === this.count) {
+        this.isOutIndex = true;
+        this.index = 0;
+      } else if (this.index < 0) {
+        this.index = this.count - 1;
+        this.isLessIndex = true;
+      }
+    } else {
+      if (this.index < 0) {
+        this.index = 0;
+      } else if (this.index > this.count - 1) {
+        this.index = this.isTouchEnd ? this.index - 1 : 0;
+        this.isTouchEnd = false;
+
+      }
+    }
+
+  }
+
+  private currentNumber() {
+    let num = this.index;
+
+    if (this.isOutIndex) {
+      return this.count + 1;
+    }
+
+    if (this.isLessIndex) {
+      return 0;
+    }
+
+    if (this._set.loop) {
+      num++;
+    }
+
+    return num;
   }
 
   private finished() {
+    this.recognitionIndex();
+
     this.swiperWrap.style.transitionDuration = this._set.speed + 'ms';
 
-    if (this.index < 0) {
-      this.index = 0;
-    } else if (this.index > this.count - 1) {
-      this.index = 0;
-    }
-
-    this.translated(-this.index * this.containerWidth);
+    this.translated(-this.currentNumber() * this.containerWidth);
     this.showPointer(this.index);
   }
 

@@ -37,9 +37,15 @@ export default class InitDom {
 
     if (this._set.loop) {
       num += 2;
+      let firstNode = this.swiperLi[0].cloneNode(true);
+      let lastNode = this.swiperLi[this.count - 1].cloneNode(true);
+
+      this.swiperWrap.appendChild(firstNode);
+      this.swiperWrap.insertBefore(lastNode, this.swiperLi[0]);
     }
 
     this.swiperWrap.style.width = num * this.containerWidth + 'px';
+    this.swiperWrap.style.transitionDuration = 0 + 'ms';
 
     for (let i = 0; i < num; i++) {
       (this.swiperLi[i] as HTMLElement).style.width = this.containerWidth + 'px';
