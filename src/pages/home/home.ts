@@ -5,12 +5,21 @@ import TouchSlider from './touchSlider';
 
 let slider1 = new TouchSlider('#demo', {
   loop: true,
-  autoPlay: true
+  autoPlay: false,
+  speed: 2000
 });
+// slider1.sliderIndex(1)
+// let slider2 = new TouchSlider('#demo2', {
+//   loop: true,
+//   autoPlay: true,
+//   speed: 300
+// });
 
-let slider2 = new TouchSlider('#demo2', {
-  loop: true,
-  autoPlay: true
-});
+
+// let slider3 = new TouchSlider('#demo3', {
+//   loop: true,
+//   autoPlay: true,
+//   speed: 300
+// });
 
 export default {};

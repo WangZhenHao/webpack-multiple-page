@@ -15,14 +15,24 @@ export default class TouchSlider {
     this.init(selector);
   }
 
-  _mergeOptions(params) {
+  private _mergeOptions(params) {
     Object.assign(this._set, params);
   }
 
-  init(selector) {
-    let domParams = new InitDom(selector, this._set);
-    this.slider = new swiperAction(domParams, this._set);
+  private init(selector) {
+    this.slider = new swiperAction(new InitDom(selector, this._set), this._set);
   }
 
+  sliderIndex(sliderIndex) {
+    this.slider.index = sliderIndex;
+    this.slider.finished();
+  }
 
+  // autoStop() {
+
+  // }
+
+  // autoStart() {
+
+  // }
 }

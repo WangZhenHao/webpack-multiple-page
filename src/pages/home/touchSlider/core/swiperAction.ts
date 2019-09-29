@@ -13,8 +13,8 @@ interface Dom {
 }
 
 export default class SwiperAction {
-  start: Start;
-  end: Start;
+  start: Start = { x: 0 };
+  end: Start = { x: 0 };
   swiperLeft: number;
   swiperWrap: HTMLElement;
   containerWidth: number;
@@ -28,6 +28,7 @@ export default class SwiperAction {
   private isOutIndex: Boolean = false;
   private isLessIndex: Boolean = false;
   private isTouchEnd: Boolean = false;
+  private isAnimated: Boolean = false;
 
   constructor(dom: Dom, options) {
     // this.touchEvent();
@@ -49,24 +50,47 @@ export default class SwiperAction {
   private touchEvent() {
 
     // 执行事件
-    this.swiperWrap.addEventListener('touchstart', this.tStart.bind(this));
-    this.swiperWrap.addEventListener('touchmove', this.tMove.bind(this));
-    this.swiperWrap.addEventListener('touchend', this.tEnd.bind(this));
+    this.swiperWrap.addEventListener('touchstart', this.eventHandle.bind(this));
+    this.swiperWrap.addEventListener('touchmove', this.eventHandle.bind(this));
+    this.swiperWrap.addEventListener('touchend', this.eventHandle.bind(this));
     this.swiperWrap.addEventListener('transitionend', this.transitionendHandle.bind(this))
   }
 
+  private eventHandle(e) {
+
+    switch (e.type) {
+      case 'touchstart': {
+        this.tStart(e);
+        break;
+      }
+      case 'touchmove': {
+        this.tMove(e);
+        break;
+      }
+      case 'touchend': {
+        this.tEnd();
+        break;
+      }
+      default: {
+        break;
+      }
+    }
+
+  }
+
   private transitionendHandle() {
+
     if (this._set.loop) {
       if (this.isOutIndex || this.isLessIndex) {
         this.isOutIndex = false;
         this.isLessIndex = false;
-        this.swiperWrap.style.transitionDuration = 0 + 'ms';
-        this.translated(-this.currentNumber() * this.containerWidth);
-
         setTimeout(function () {
-          // this.swiperWrap.style.transitionDuration = this._set.speed + 'ms';
+          this.swiperWrap.style.transitionDuration = 0 + 'ms';
+          this.translated(-this.currentNumber() * this.containerWidth);
         }.bind(this), 0);
       }
+
+
 
     }
 
@@ -81,7 +105,6 @@ export default class SwiperAction {
       this.clearAutoPlay();
       this.timer = setInterval(function () {
         this.index++;
-        console.log(this.index)
         this.finished();
       }.bind(this), this._set.interval);
     }
@@ -101,14 +124,21 @@ export default class SwiperAction {
 
   private tMove(e) {
     let touch = e.targetTouches[0];
+    let move = (touch.pageX - this.start.x) * 0.8;
+
     e.preventDefault();
     this.clearAutoPlay();
-    this.end = { x: (touch.pageX - this.start.x) * 0.7 };
+    // move = move > 375 ? 375 : move;
+
+
+
+
+    this.end = { x: Math.round(move) };
     this.swiperWrap.style.transitionDuration = 0 + 'ms';
     this.translated(-this.swiperLeft + this.end.x);
   }
 
-  private tEnd(e) {
+  private tEnd() {
     if (this.end.x < -this._set.slider_dis) {
       this.index++;
     } else if (this.end.x > this._set.slider_dis) {
@@ -126,7 +156,7 @@ export default class SwiperAction {
 
   private recognitionIndex() {
     if (this._set.loop) {
-      if (this.index === this.count) {
+      if (this.index >= this.count) {
         this.isOutIndex = true;
         this.index = 0;
       } else if (this.index < 0) {
@@ -163,7 +193,7 @@ export default class SwiperAction {
     return num;
   }
 
-  private finished() {
+  finished() {
     this.recognitionIndex();
 
     this.swiperWrap.style.transitionDuration = this._set.speed + 'ms';
@@ -184,14 +214,4 @@ export default class SwiperAction {
     this.swiperWrap.style.transform = `translate3d(${left}px, 0, 0)`;
   }
 
-  getCurrentPosition(): object {
-    let matrix = window.getComputedStyle(this.swiperWrap, null);
-    let x;
-    let y;
-
-    return {
-      x,
-      y
-    };
-  }
 }

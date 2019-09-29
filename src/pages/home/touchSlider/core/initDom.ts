@@ -63,7 +63,7 @@ export default class InitDom {
       position: absolute;
       left: 0;
       top: 0;
-      transition: transform 0ms linear;
+      transition-property: transform;
     }
     .swiper-container > .swiper-wrap > li {
       float: left;
