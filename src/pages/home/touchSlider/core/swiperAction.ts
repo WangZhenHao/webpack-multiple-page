@@ -57,7 +57,8 @@ export default class SwiperAction {
   }
 
   private eventHandle(e) {
-
+    console.log(e)
+    if (this.isAnimated) return;
     switch (e.type) {
       case 'touchstart': {
         this.tStart(e);
@@ -79,12 +80,14 @@ export default class SwiperAction {
   }
 
   private transitionendHandle() {
-
+    console.log('end')
+    this.isAnimated = false;
     if (this._set.loop) {
       if (this.isOutIndex || this.isLessIndex) {
         this.isOutIndex = false;
         this.isLessIndex = false;
         setTimeout(function () {
+          // this.isAnimated = false;
           this.swiperWrap.style.transitionDuration = 0 + 'ms';
           this.translated(-this.currentNumber() * this.containerWidth);
         }.bind(this), 0);
@@ -146,7 +149,7 @@ export default class SwiperAction {
     }
 
     this.isTouchEnd = true;
-
+    this.isAnimated = true;
     this.end.x = 0;
 
     this.finished();

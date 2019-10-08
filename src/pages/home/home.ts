@@ -6,7 +6,7 @@ import TouchSlider from './touchSlider';
 let slider1 = new TouchSlider('#demo', {
   loop: true,
   autoPlay: false,
-  speed: 2000
+  speed: 300
 });
 // slider1.sliderIndex(1)
 // let slider2 = new TouchSlider('#demo2', {
