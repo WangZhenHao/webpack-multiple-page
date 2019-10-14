@@ -14,3 +14,4 @@ export interface TouchSliderConfig {
   // 是否显示指示器
   pointer: Boolean;
 }
+

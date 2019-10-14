@@ -18,12 +18,12 @@ const pages = [
     entry: 'home/home.ts',
     title: '首页'
   },
-  {
-    name: 'about',
-    template: 'about/about.html',
-    entry: 'about/about.ts',
-    title: '关于我们'
-  }
+  // {
+  //   name: 'about',
+  //   template: 'about/about.html',
+  //   entry: 'about/about.ts',
+  //   title: '关于我们'
+  // }
 ]
 
 module.exports = pages;

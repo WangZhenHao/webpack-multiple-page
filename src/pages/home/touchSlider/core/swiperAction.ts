@@ -1,5 +1,7 @@
 import { getTransformX } from '../utils/utils';
 import { TouchSliderConfig } from '../type';
+import Swiper from './index'
+
 interface Start {
   x: number;
   // y: number;
@@ -24,18 +26,21 @@ export default class SwiperAction {
   pointerLi: HTMLCollection;
   timer: any;
   currentIndex: number;
+  swiper: Swiper;
 
   private isOutIndex: Boolean = false;
   private isLessIndex: Boolean = false;
   private isTouchEnd: Boolean = false;
   private isAnimated: Boolean = false;
 
-  constructor(dom: Dom, options) {
+  constructor(dom: Dom, swiper) {
     // this.touchEvent();
+    this.swiper = swiper;
     let { swiperWrap, containerWidth, count, pointerLi } = dom;
 
     Object.assign(this, { swiperWrap, containerWidth, count, pointerLi });
-    this._set = options;
+    this._set = this.swiper._set;
+
 
 
     this.touchEvent();
@@ -53,11 +58,11 @@ export default class SwiperAction {
     this.swiperWrap.addEventListener('touchstart', this.eventHandle.bind(this));
     this.swiperWrap.addEventListener('touchmove', this.eventHandle.bind(this));
     this.swiperWrap.addEventListener('touchend', this.eventHandle.bind(this));
-    this.swiperWrap.addEventListener('transitionend', this.transitionendHandle.bind(this))
+    // this.swiperWrap.addEventListener('transitionend', this.transitionendHandle.bind(this))
   }
 
   private eventHandle(e) {
-    console.log(e)
+
     if (this.isAnimated) return;
     switch (e.type) {
       case 'touchstart': {
@@ -80,20 +85,18 @@ export default class SwiperAction {
   }
 
   private transitionendHandle() {
-    console.log('end')
+    this.swiper.trigger('finish', this.index)
+
     this.isAnimated = false;
     if (this._set.loop) {
       if (this.isOutIndex || this.isLessIndex) {
         this.isOutIndex = false;
         this.isLessIndex = false;
-        setTimeout(function () {
-          // this.isAnimated = false;
+        setTimeout(() => {
           this.swiperWrap.style.transitionDuration = 0 + 'ms';
           this.translated(-this.currentNumber() * this.containerWidth);
-        }.bind(this), 0);
+        }, 0);
       }
-
-
 
     }
 
@@ -107,6 +110,7 @@ export default class SwiperAction {
     if (this._set.autoPlay) {
       this.clearAutoPlay();
       this.timer = setInterval(function () {
+        this.swiper.trigger('start', this.index);
         this.index++;
         this.finished();
       }.bind(this), this._set.interval);
@@ -120,6 +124,7 @@ export default class SwiperAction {
   }
 
   private tStart(e) {
+    this.swiper.trigger('start', this.index)
     let touch = e.targetTouches[0];
     this.start = { x: touch.pageX };
     this.swiperLeft = getTransformX(this.swiperWrap.style.transform);
@@ -197,12 +202,19 @@ export default class SwiperAction {
   }
 
   finished() {
+
+
+
     this.recognitionIndex();
 
     this.swiperWrap.style.transitionDuration = this._set.speed + 'ms';
 
     this.translated(-this.currentNumber() * this.containerWidth);
     this.showPointer(this.index);
+
+    setTimeout(() => {
+      this.transitionendHandle();
+    }, this._set.speed);
   }
 
   private showPointer(index) {

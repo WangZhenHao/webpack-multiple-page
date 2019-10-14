@@ -3,3 +3,5 @@ export function getTransformX(value) {
   let arr = value.match(re);
   return arr ? arr[1] : 0;
 }
+
+

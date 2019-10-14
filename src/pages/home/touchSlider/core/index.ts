@@ -1,9 +1,10 @@
-import DEFAULTS from './default';
+import DEFAULTS from './Default';
 import { TouchSliderConfig } from '../type';
-import InitDom from './initDom';
-import swiperAction from './swiperAction';
+import InitDom from './InitDom';
+import swiperAction from './SwiperAction';
+import EventEmitter from './EventEmitter';
 
-export default class TouchSlider {
+class TouchSlider extends EventEmitter {
   selector: string;
   container: HTMLElement;
   swiperWrap: HTMLElement;
@@ -11,6 +12,7 @@ export default class TouchSlider {
   slider: any;
 
   constructor(selector: string, config: Object) {
+    super();
     this._mergeOptions(config);
     this.init(selector);
   }
@@ -20,14 +22,29 @@ export default class TouchSlider {
   }
 
   private init(selector) {
-    this.slider = new swiperAction(new InitDom(selector, this._set), this._set);
+    this.slider = new swiperAction(new InitDom(selector, this._set), this);
   }
+
+  // refresh() {
+
+  // }
 
   sliderIndex(sliderIndex) {
     this.slider.index = sliderIndex;
     this.slider.finished();
   }
 
+  next() {
+    this.trigger('start', this.slider.index);
+    this.slider.index++;
+    this.slider.finished();
+  }
+
+  prev() {
+    this.trigger('start', this.slider.index);
+    this.slider.index--;
+    this.slider.finished();
+  }
   // autoStop() {
 
   // }
@@ -36,3 +53,5 @@ export default class TouchSlider {
 
   // }
 }
+
+export default TouchSlider;
