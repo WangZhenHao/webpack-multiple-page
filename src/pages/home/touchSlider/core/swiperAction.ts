@@ -86,6 +86,7 @@ export default class SwiperAction {
 
   private transitionendHandle() {
     this.swiper.trigger('finish', this.index)
+    this.autoPlay();
 
     this.isAnimated = false;
     if (this._set.loop) {
@@ -158,7 +159,7 @@ export default class SwiperAction {
     this.end.x = 0;
 
     this.finished();
-    this.autoPlay();
+
     // this.transitionendHandle();
   }
 
@@ -203,7 +204,7 @@ export default class SwiperAction {
 
   finished() {
 
-
+    this.clearAutoPlay();
 
     this.recognitionIndex();
 
