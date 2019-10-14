@@ -9,7 +9,7 @@ class TouchSlider extends EventEmitter {
   container: HTMLElement;
   swiperWrap: HTMLElement;
   _set: TouchSliderConfig = DEFAULTS;
-  slider: any;
+  slider: swiperAction;
 
   constructor(selector: string, config: Object) {
     super();
