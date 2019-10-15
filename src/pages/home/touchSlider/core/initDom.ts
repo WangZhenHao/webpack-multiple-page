@@ -1,4 +1,5 @@
 import { TouchSliderConfig } from '../type';
+let COUNT = 0;
 
 export default class InitDom {
   container: HTMLElement;
@@ -53,6 +54,11 @@ export default class InitDom {
   }
 
   private createTouchSliderCss(): void {
+    if (COUNT >= 1) {
+      return;
+    }
+
+    COUNT++;
     let cssStr = `.swiper-container {
       width: 100%;
       height: 400px;

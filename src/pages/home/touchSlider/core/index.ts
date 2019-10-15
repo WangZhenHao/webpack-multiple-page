@@ -1,7 +1,7 @@
 import DEFAULTS from './Default';
 import { TouchSliderConfig } from '../type';
 import InitDom from './InitDom';
-import swiperAction from './SwiperAction';
+import SwiperAction from './SwiperAction';
 import EventEmitter from './EventEmitter';
 
 class TouchSlider extends EventEmitter {
@@ -9,7 +9,7 @@ class TouchSlider extends EventEmitter {
   container: HTMLElement;
   swiperWrap: HTMLElement;
   _set: TouchSliderConfig = DEFAULTS;
-  slider: swiperAction;
+  slider: SwiperAction;
 
   constructor(selector: string, config: Object) {
     super();
@@ -22,7 +22,7 @@ class TouchSlider extends EventEmitter {
   }
 
   private init(selector) {
-    this.slider = new swiperAction(new InitDom(selector, this._set), this);
+    this.slider = new SwiperAction(new InitDom(selector, this._set), this);
   }
 
   // refresh() {

@@ -154,8 +154,7 @@ export default class SwiperAction {
       this.index--;
     }
 
-    this.isTouchEnd = true;
-    this.isAnimated = true;
+
     this.end.x = 0;
 
     this.finished();
@@ -203,9 +202,9 @@ export default class SwiperAction {
   }
 
   finished() {
-
+    this.isTouchEnd = true;
+    this.isAnimated = true;
     this.clearAutoPlay();
-
     this.recognitionIndex();
 
     this.swiperWrap.style.transitionDuration = this._set.speed + 'ms';
