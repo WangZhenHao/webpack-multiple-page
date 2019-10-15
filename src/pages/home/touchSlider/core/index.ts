@@ -13,11 +13,11 @@ class TouchSlider extends EventEmitter {
 
   constructor(selector: string, config: Object) {
     super();
-    this._mergeOptions(config);
+    this.mergeOptions(config);
     this.init(selector);
   }
 
-  private _mergeOptions(params) {
+  private mergeOptions(params) {
     Object.assign(this._set, params);
   }
 
