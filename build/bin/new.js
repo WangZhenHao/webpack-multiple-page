@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 // process.on('exit', function() {
 
@@ -15,11 +15,11 @@ const fileSave = require('file-save');
 const pageList = require('../config/pages.js');
 
 function pageResove(dir) {
-	return path.join(__dirname, '../../', './src/pages', dir);
+  return path.join(__dirname, '../../', './src/pages', dir);
 }
 
 const Files = {
-	html: `<!DOCTYPE html>
+  html: `<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -29,8 +29,8 @@ const Files = {
 		
 </body>
 </html>`,
-	js: function(name) {
-		return `import "@/assets/js/fetch.js";
+  js: function (name) {
+    return `import "@/assets/js/fetch.js";
 
 var page = {
   init() {
@@ -39,42 +39,37 @@ var page = {
 };
 
 page.init();
-`
-	},
-}
+`;
+  },
+};
 
 function buildFile() {
-	var len = pageList.length,
-		i = 0;
-	while(i < len) {
-		let item = pageList[i];
-		i++;
-		fs.access(pageResove(item.template), function(err) {
-			
-			if(!err) {
-				return;
-			}
-			
-			console.log('新建文件: ' + item.template)
-			
-			//新建html
-			fileSave(pageResove(item.template))
-			  .write(Files.html, 'utf8')
-			  .end('\n');
+  var len = pageList.length,
+    i = 0;
+  while (i < len) {
+    let item = pageList[i];
+    i++;
+    fs.access(pageResove(item.template), function (err) {
+      if (!err) {
+        return;
+      }
 
-			//新建js
-			fileSave(pageResove(item.entry))
-			  .write(Files.js(item.name), 'utf8')
-			  .end('\n');
+      console.log('新建文件: ' + item.template);
 
-			//新建scss
-			fileSave(pageResove(item.template.replace('.html', '.scss')))
-			  .write('', 'utf8')
-			  .end('\n');
+      //新建html
+      fileSave(pageResove(item.template)).write(Files.html, 'utf8').end('\n');
 
-			
-		})
-	}
+      //新建js
+      fileSave(pageResove(item.entry))
+        .write(Files.js(item.name), 'utf8')
+        .end('\n');
+
+      //新建scss
+      fileSave(pageResove(item.template.replace('.html', '.scss')))
+        .write('', 'utf8')
+        .end('\n');
+    });
+  }
 }
 
 buildFile();
