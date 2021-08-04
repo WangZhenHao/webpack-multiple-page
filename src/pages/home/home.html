@@ -3,19 +3,19 @@
 <head>
 	<meta charset="UTF-8">
 	<title><%= htmlWebpackPlugin.options.title %></title>
-	<%= require('html-loader!../../assets/layout/head.html')  %>
+	{% include @layoutPath/mate.html %}
 </head>
 <body>
-	你好啊,我是首页<br>
+	{% include @layoutPath/nav.html %}
 	<a href="./about.html">关于我们</a><br>
 	<a href="./user/login.html">登录</a><br>
 	<a href="./user/register.html">注册</a>
+	
 	<br>
-	<!-- <img src=<%= require('@/assets/img/left_03.jpg') %> /> -->
-	<!-- <img src="/static/img/left_03.jpg" alt=""> -->
-	<!-- <div id="wrap"></div> -->
-	<script>
-		// document.body.style.background = "red";
-	</script>
+	<div style="height: calc(100vh - 300px);" class="body-wrap">
+		output: {% webpackConfig.output  %}
+		filename: {% webpackConfig.output.filename  %}
+	</div>
+	{% include @layoutPath/footer.html %}
 </body>
 </html>

@@ -8,6 +8,33 @@
 
 <!-- ### [案例:移动端官网](https://ss-sites.zhongxiang51.com/)  -->
 
+#### 1.2.0 修改html-wbepack-plugin插件：添加{%  %}分界符号 build\plugin\html-webpack-plugin\lib\compilerHtml.js
+
+```
+
+<link rel="stylesheet" href="{% webpackConfig.output.publicPath  %}/static/css/common.css">
+{% include @layoutPath/nav.html %}
+
+<div style="height: calc(100vh - 300px);" class="body-wrap">
+    output: {% webpackConfig.output  %}
+    filename: {% webpackConfig.output.filename  %}
+</div>
+
+
+
+1：使用分界符合 {%  %} 就可以做简单的语法，引入知道路径的语法`@layoutPath`是在webpack.resolve配置
+{% include @layoutPath/nav.html %}
+
+2：也可以访问对象的
+webpack配置
+{% webpackConfig %}
+
+htmlWebapckPlugin配置
+{% htmlWebpackPlugin %}
+
+```
+
+
 #### 1.1.0 新增自动创建文件功能
 ```
 添加新增文件的配置文件  build/bin/new.js
@@ -43,9 +70,12 @@
 │    │          home.scss
 │    │
 │    └─assets                          // 公共文件夹
-│          ├─ layout                   // 复用html     
-│          │     head.html             // 公共头文件 
-│          │ 
+│          └─ layout                   // 复用html     
+│                 nav.html             // 公共头文件 
+│                 mate.html            //公共mate文件
+│                 footer.html          // 公共footer文件
+│
+│
 │
 │
 │

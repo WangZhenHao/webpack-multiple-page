@@ -11,6 +11,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': resove('src'),
+      '@layoutPath': resove('./src/assets/layout')
     },
   },
   entry: pagesGenerate.entry,

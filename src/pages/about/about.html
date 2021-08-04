@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title><%= htmlWebpackPlugin.options.title %></title>
-	<%= require('html-loader!../../assets/layout/head.html')  %>
+	{% include @layoutPath/mate.html %}
 </head>
 <body>
 	关于我们页面

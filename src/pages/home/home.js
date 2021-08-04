@@ -10,8 +10,9 @@ var page = {
   	<a href="https://github.com/babel/babel" target="_blank" rel="nofollow">Babel</a>&nbsp;and&nbsp;
   	<a href="https://github.com/webpack/webpack" target="_blank" rel="nofollow">webpack</a>
   	</p>`;
-    document.body.innerHTML += str;
+    // document.body.innerHTML += str;
     console.log(str)
+    alert('欢迎来到新页面')
     // this.test();
   },
   // test() {
