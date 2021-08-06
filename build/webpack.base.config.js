@@ -17,19 +17,10 @@ module.exports = {
   entry: pagesGenerate.entry,
   module: {
     rules: [
-      // {
-      // 	test: /\.js$/,
-      // 	loader: 'babel-loader',
-      // 	include: [resove('src'), resove('static')]
-      // },
       {
         test: /\.js$/,
         include: [resove('src')],
         loader: 'babel-loader',
-        // use: {
-        //   loader: 'babel-loader',
-
-        // }
       },
       {
         test: /\.(woff2?|eot|ttf|otf)(\?.*)?$/,
@@ -40,10 +31,6 @@ module.exports = {
           name: assetsPath('fonts/[name].[hash:7].[ext]'),
         },
       },
-      // {
-      //     test: /\.(htm|html)$/i,
-      //     loader: 'html-withimg-loader'
-      // },
       {
         test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
         loader: 'url-loader',
