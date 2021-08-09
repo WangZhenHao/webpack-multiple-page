@@ -28,7 +28,7 @@ const compileHtml = require('./lib/compilerHtml')
 
 
 class HtmlWebpackPlugin {
-  static tiwce = 1;
+  // static tiwce = 1;
   /**
    * @param {HtmlWebpackOptions} [options]
    */
@@ -239,7 +239,7 @@ function hookIntoCompiler (compiler, options, plugin) {
           const templateResult = options.templateContent
             ? { mainCompilationHash: compilation.hash }
             : childCompilerPlugin.getCompilationEntryResult(options.template);
-          console.log(HtmlWebpackPlugin.tiwce++, '--------------------------->')
+          // console.log(HtmlWebpackPlugin.tiwce++, '--------------------------->')
           // return
           if ('error' in templateResult) {
             compilation.errors.push(prettyError(templateResult.error, compiler.context).toString());
