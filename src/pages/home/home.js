@@ -12,7 +12,7 @@ var page = {
   	</p>`;
     // document.body.innerHTML += str;
     console.log(str)
-    alert('欢迎来到新页面')
+    // alert('欢迎来到新页面')
     // this.test();
   },
   // test() {
