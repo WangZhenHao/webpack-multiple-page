@@ -14,7 +14,7 @@ function comiplerHtml(text, compilation, prapms) {
   return str;
 }
 function resolve(path) {
-  const re = /(.*?)\/$/g;
+   const re = /(\S+)\/$/g;
 
   if (re.test(path)) {
     path = RegExp.$1;
