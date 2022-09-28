@@ -7,6 +7,7 @@ const { getPageGenerate } = require('./utils.js');
 const pagesGenerate = getPageGenerate();
 const portfinder = require('portfinder');
 const config = require('./config/index.js');
+const HtmlPlugin = require('./plugin/my-html-plugin/index.js')
 
 const devWebpackConfig = merge(common, {
   mode: 'development',
@@ -52,6 +53,7 @@ const devWebpackConfig = merge(common, {
     ...pagesGenerate.htmlWebpackPlugin,
     //启用热替换模块(Hot Module Replacement)，也被称为 HMR。
     new webpack.HotModuleReplacementPlugin(),
+    new HtmlPlugin()
   ],
 });
 
