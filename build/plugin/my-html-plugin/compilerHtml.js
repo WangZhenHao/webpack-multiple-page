@@ -3,13 +3,18 @@ const TARGET = /\{\%\s?.*?\%\}/g;
 const includeRe = /(\{\%\s+)(include)\s([^\/]+)(\S+)(\s+\%\})/;
 const paramsRe = /(\{\%\s+)(\S+)(\s+\%\})/;
 
-function comiplerHtml(text, compilation, prapms) {
+function comiplerHtml(text, prapms) {
   let str = text;
-  // const alias = prapms.webpackConfig.resolve.alias;
-  const path = prapms.webpackConfig.output.publicPath;
-  prapms.webpackConfig.output.publicPath = resolve(path);
+  // const alias = prapms.resolve.alias;
 
-  str = _comiplerHtml(str, prapms);
+  const path = prapms.output.publicPath;
+  prapms.output.publicPath = resolve(path);
+
+  const json = {
+    webpackConfig: prapms,
+  };
+
+  str = _comiplerHtml(str, json);
 
   return str;
 }
