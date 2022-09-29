@@ -1,6 +1,7 @@
 const pages = require('./config/pages.js');
 const path = require('path');
-const HtmlWebpackPlugin = require('./plugin/html-webpack-plugin');
+// const HtmlWebpackPlugin = require('./plugin/html-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 function resove(dir) {
   return path.join(__dirname, '..', './src/pages', dir);

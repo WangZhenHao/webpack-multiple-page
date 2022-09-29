@@ -29,6 +29,7 @@
     "friendly-errors-webpack-plugin": "^1.7.0",
     "html-minifier": "^3.2.3",
     "html-minifier-terser": "^5.0.1",
+    "html-webpack-plugin": "^5.5.0",
     "loader-utils": "^0.2.16",
     "lodash": "^4.17.20",
     "mini-css-extract-plugin": "^0.6.0",

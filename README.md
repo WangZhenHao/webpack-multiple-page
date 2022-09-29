@@ -13,7 +13,7 @@
 示例：
 ![demo](https://github.com/WangZhenHao/webpack-multiple-page/raw/master/static/img/demo.jpg)
 
-#### 1.2.0 修改html-wbepack-plugin插件：添加{%  %}分界符号 build\plugin\html-webpack-plugin\lib\compilerHtml.js
+#### 1.2.0 添加自定义插件，配合html-webpack-plugin插件使用：添加{%  %}分界符号 build\plugin\my-html-plugin\index.js
 
 ```
 
@@ -34,8 +34,6 @@
 webpack配置
 {% webpackConfig %}
 
-htmlWebapckPlugin配置
-{% htmlWebpackPlugin %}
 
 ```
 
