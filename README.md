@@ -16,22 +16,11 @@
 #### 1.2.0 添加自定义插件，配合html-webpack-plugin插件使用：添加{%  %}分界符号 build\plugin\my-html-plugin\index.js
 
 ```
-
-<link rel="stylesheet" href="{% webpackConfig.output.publicPath  %}/static/css/common.css">
-{% include @layoutPath/nav.html %}
-
-<div style="height: calc(100vh - 300px);" class="body-wrap">
-    output: {% webpackConfig.output  %}
-    filename: {% webpackConfig.output.filename  %}
-</div>
-
-
-
 1：使用分界符合 {%  %} 就可以做简单的语法，引入知道路径的语法`@layoutPath`是在webpack.resolve配置
 {% include @layoutPath/nav.html %}
 
 2：也可以访问配置信息webpack的配置
-{% webpackConfig %}
+{% webpackConfig.output  %} {% webpackConfig.output.publicPath  %}
 
 3: 可以注入自定义的变量
 new HtmlPlugin({
