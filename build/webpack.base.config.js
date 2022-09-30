@@ -2,7 +2,7 @@ const path = require('path');
 const { getPageGenerate, assetsPath } = require('./utils.js');
 const pagesGenerate = getPageGenerate();
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const HtmlPlugin = require('./plugin/my-html-plugin/index.js')
+const HtmlPlugin = require('./plugin/my-html-plugin/index.js');
 
 function resove(dir) {
   return path.join(__dirname, '..', dir);
@@ -12,7 +12,7 @@ module.exports = {
   resolve: {
     alias: {
       '@': resove('src'),
-      '@layoutPath': resove('./src/assets/layout')
+      '@layoutPath': resove('./src/assets/layout'),
     },
   },
   entry: pagesGenerate.entry,
@@ -63,6 +63,6 @@ module.exports = {
         // toType  file 或者 dir         可选，默认是文件
       },
     ]),
-    new HtmlPlugin()
+    new HtmlPlugin(),
   ],
 };

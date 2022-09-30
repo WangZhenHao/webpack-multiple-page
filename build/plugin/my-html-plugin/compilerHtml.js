@@ -7,17 +7,18 @@ function comiplerHtml(text, prapms) {
   let str = text;
   // const alias = prapms.resolve.alias;
 
-  const path = prapms.output.publicPath;
-  prapms.output.publicPath = resolve(path);
+  const path = prapms.webpackConfig.output.publicPath;
+  prapms.webpackConfig.output.publicPath = resolve(path);
 
-  const json = {
-    webpackConfig: prapms,
-  };
+  // const json = {
+  //   webpackConfig: prapms,
+  // };
 
-  str = _comiplerHtml(str, json);
+  str = _comiplerHtml(str, prapms);
 
   return str;
 }
+
 function resolve(path) {
   const re = /(\S+)\/$/g;
 
