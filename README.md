@@ -1,5 +1,7 @@
 # webpack5多页面脚手架
 
+node 版本只支持14.x.x
+
 [移步webpack5多页面脚手架](https://github.com/WangZhenHao/webpack-multiple-page/tree/webpack5)
 
 [移步webpack4多页面脚手架](https://github.com/WangZhenHao/webpack-multiple-page/tree/webpack4)
